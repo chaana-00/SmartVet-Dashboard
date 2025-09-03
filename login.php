@@ -41,7 +41,7 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $_SESSION['username'] = $user;
     $_SESSION['role'] = $role;
-    header("Location: users-dashboard.html");
+    header("Location: user-dashboard.html");
     exit();
 } else {
     echo "<script>alert('Invalid login! Please try again.'); window.location='login.html';</script>";

@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssss", $fullname, $designation, $company, $telephone, $username, $password);
 
     if ($stmt->execute()) {
-        echo "<script>alert('User registered successfully!'); window.location='users-list.html';</script>";
+        echo "<script>alert('User registered successfully!'); window.location='users-list.php';</script>";
     } else {
         echo "<script>alert('Error: " . $conn->error . "'); window.location='manage-users.html';</script>";
     }
