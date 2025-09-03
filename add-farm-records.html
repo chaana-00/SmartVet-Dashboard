@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Farm Records | VetSmart</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Google Font - Outfit -->
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+                rel="stylesheet">
+
+        <!-- Boxicons -->
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+                <div class="toggle-btn" id="toggle-btn">
+                        <i class='bx bx-chevron-right'></i>
+                </div>
+
+                <!-- Company Logo -->
+                <div class="logo">
+                        <img src="images/favicon.png" alt="VetSmart Logo" style="width: 100px; height: auto;">
+                </div>
+                <h2 class="logo">VetSmart</h2>
+                <ul>
+                        <li><a href="farm-register.html"><i class='bx bx-user'></i><span class="link-text">Farm
+                                                Register</span></a>
+                        </li>
+                        <li><a href="add-farm-records.html"><i class='bx bx-file'></i><span class="link-text">Add Farm
+                                                Records</span></a></li>
+                        <!-- <li><a href="add-batch.html"><i class='bx bx-layer'></i><span class="link-text">Add Batch</span></a></li> -->
+                        <li><a href="view-history.html"><i class='bx bx-folder-open'></i><span class="link-text">View
+                                                History</span></a></li>
+                        <!-- <li><a href="#"><i class='bx bx-bell'></i><span class="link-text">Notification</span></a></li>
+                        <li><a href="#"><i class='bx bx-cog'></i><span class="link-text">Settings</span></a></li> -->
+                        <li><a href="user-dashboard.html"><i class='bx bx-layer'></i><span
+                                                class="link-text">Dashboard</span></a></li>
+
+                </ul>
+        </div>
+
+        <div class="main">
+                <!-- Topbar -->
+                <div class="d-flex justify-content-end p-3">
+                        <!-- Profile Dropdown -->
+                        <div>
+                                <button class="btn btn-light d-flex align-items-center" type="button" id="profileMenu"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class='bx bx-user-circle fs-3'></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileMenu">
+                                        <li><a class="dropdown-item" href="#"><i
+                                                                class='bx bx-user me-2'></i>Profile</a></li>
+
+                                        <li><a class="dropdown-item" href="#"><i
+                                                                class='bx bx-log-out me-2'></i>Logout</a></li>
+                                </ul>
+                        </div>
+                </div>
+
+                <div class="container mt-4">
+                        <!-- Broilers Form -->
+                        <div class="card shadow-sm mb-4 p-4">
+                                <h3 class="text-primary mb-3">Add Records for Broilers</h3>
+                                <form id="broilersForm" action="save-broilers.php" method="POST"
+                                        enctype="multipart/form-data">
+
+                                        <div class="mb-3">
+                                                <label class="form-label">Farm Name</label>
+                                                <select name="farm_name" class="form-select" required>
+                                                        <option value="">Select Farm</option>
+                                                        <?php
+              // Fetch farm names from MySQL
+              $conn = new mysqli("localhost","root","","vetsmartdb");
+              $result = $conn->query("SELECT id, farm_name FROM farms ORDER BY farm_name ASC");
+              while($row = $result->fetch_assoc()){
+                echo "<option value='".$row['id']."'>".$row['farm_name']."</option>";
+              }
+              $conn->close();
+              ?>
+                                                </select>
+                                        </div>
+
+                                        <div class="mb-3"><label class="form-label">Registration Number</label><input
+                                                        type="text" name="reg_number" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Visit Date and Time</label><input
+                                                        type="datetime-local" name="visit_datetime" class="form-control"
+                                                        required></div>
+                                        <div class="mb-3"><label class="form-label">Flock Size</label><input
+                                                        type="number" name="flock_size" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Age</label><input type="number"
+                                                        name="age" class="form-control" required></div>
+                                        <div class="mb-3"><label class="form-label">Average Weight (Kg)</label><input
+                                                        type="number" step="0.01" name="avg_weight" class="form-control"
+                                                        required></div>
+                                        <div class="mb-3"><label class="form-label">Weight Gain (Kg)</label><input
+                                                        type="number" step="0.01" name="weight_gain"
+                                                        class="form-control" required></div>
+                                        <div class="mb-3"><label class="form-label">Feed Intake</label><input
+                                                        type="text" name="feed_intake" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Mortality</label><input
+                                                        type="number" name="mortality" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Mortality Percentage</label><input
+                                                        type="number" step="0.01" name="mortality_percent"
+                                                        class="form-control" required></div>
+                                        <div class="mb-3"><label class="form-label">Complain / Visit
+                                                        Purpose</label><textarea name="complain" class="form-control"
+                                                        rows="3"></textarea></div>
+                                        <div class="mb-3"><label class="form-label">Clinical Signs</label><textarea
+                                                        name="clinical_signs" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Post Mortem Changes</label><textarea
+                                                        name="post_mortem_changes" class="form-control"
+                                                        rows="3"></textarea></div>
+                                        <div class="mb-3">
+                                                <label class="form-label">Post Mortem Images</label>
+                                                <input type="file" name="post_mortem_images[]" multiple
+                                                        accept=".jpg,.jpeg,.png,.heic" class="form-control">
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">DD</label><input type="text"
+                                                        name="dd" class="form-control"></div>
+                                        <div class="mb-3"><label class="form-label">Test Request</label><textarea
+                                                        name="test_request" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Test Report</label><textarea
+                                                        name="test_report" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Recommendation / Management
+                                                        Advices</label><textarea name="recommendation"
+                                                        class="form-control" rows="3"></textarea></div>
+                                        <div class="mb-3"><label class="form-label">Treatment</label><textarea
+                                                        name="treatment" class="form-control" rows="3"></textarea></div>
+                                        <div class="mb-3"><label class="form-label">Follow Ups</label><textarea
+                                                        name="follow_ups" class="form-control" rows="3"></textarea>
+                                        </div>
+
+                                        <div class="d-flex gap-2">
+                                                <button type="submit" class="btn btn-success">Save Broilers
+                                                        Record</button>
+                                                <button type="button" class="btn btn-primary"
+                                                        onclick="downloadWord('broilersForm', 'Broilers_Record')">Download</button>
+                                        </div>
+
+                                </form>
+                        </div>
+
+                        <!-- Layers Form -->
+                        <div class="card shadow-sm mb-4 p-4">
+                                <h3 class="text-success mb-3">Add Records for Layers</h3>
+                                <form id="layersForm" action="save-layers.php" method="POST"
+                                        enctype="multipart/form-data">
+
+                                        <div class="mb-3">
+                                                <label class="form-label">Farm Name</label>
+                                                <select name="farm_name" class="form-select" required>
+                                                        <option value="">Select Farm</option>
+                                                        <?php
+              // Fetch farm names from MySQL
+              $conn = new mysqli("localhost","root","","vetsmartdb");
+              $result = $conn->query("SELECT id, farm_name FROM farms ORDER BY farm_name ASC");
+              while($row = $result->fetch_assoc()){
+                echo "<option value='".$row['id']."'>".$row['farm_name']."</option>";
+              }
+              $conn->close();
+              ?>
+                                                </select>
+                                        </div>
+
+                                        <div class="mb-3"><label class="form-label">Registration Number</label><input
+                                                        type="text" name="reg_number" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Visit Date and Time</label><input
+                                                        type="datetime-local" name="visit_datetime" class="form-control"
+                                                        required></div>
+                                        <div class="mb-3"><label class="form-label">Flock Size</label><input
+                                                        type="number" name="flock_size" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Age</label><input type="number"
+                                                        name="age" class="form-control" required></div>
+                                        <div class="mb-3"><label class="form-label">Average Age</label><input
+                                                        type="number" name="avg_age" class="form-control"></div>
+                                        <div class="mb-3"><label class="form-label">Egg Production</label><input
+                                                        type="number" name="egg_production" class="form-control"></div>
+                                        <div class="mb-3"><label class="form-label">Egg Production
+                                                        Percentage</label><input type="number" step="0.01"
+                                                        name="egg_percent" class="form-control"></div>
+                                        <div class="mb-3"><label class="form-label">Feed Intake</label><input
+                                                        type="text" name="feed_intake" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Mortality</label><input
+                                                        type="number" name="mortality" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Mortality Percentage</label><input
+                                                        type="number" step="0.01" name="mortality_percent"
+                                                        class="form-control" required></div>
+                                        <div class="mb-3"><label class="form-label">Complain / Visit
+                                                        Purpose</label><textarea name="complain" class="form-control"
+                                                        rows="3"></textarea></div>
+                                        <div class="mb-3"><label class="form-label">Clinical Signs</label><textarea
+                                                        name="clinical_signs" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Post Mortem Changes</label><textarea
+                                                        name="post_mortem_changes" class="form-control"
+                                                        rows="3"></textarea></div>
+                                        <div class="mb-3">
+                                                <label class="form-label">Post Mortem Images</label>
+                                                <input type="file" name="post_mortem_images[]" multiple
+                                                        accept=".jpg,.jpeg,.png,.heic" class="form-control">
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">DD</label><input type="text"
+                                                        name="dd" class="form-control"></div>
+                                        <div class="mb-3"><label class="form-label">Test Request</label><textarea
+                                                        name="test_request" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Test Report</label><textarea
+                                                        name="test_report" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3"><label class="form-label">Recommendation / Management
+                                                        Advices</label><textarea name="recommendation"
+                                                        class="form-control" rows="3"></textarea></div>
+                                        <div class="mb-3"><label class="form-label">Treatment</label><textarea
+                                                        name="treatment" class="form-control" rows="3"></textarea></div>
+                                        <div class="mb-3"><label class="form-label">Follow Ups</label><textarea
+                                                        name="follow_ups" class="form-control" rows="3"></textarea>
+                                        </div>
+
+                                        <div class="d-flex gap-2">
+                                                <button type="submit" class="btn btn-success">Save Layers
+                                                        Record</button>
+                                                <button type="button" class="btn btn-primary"
+                                                        onclick="downloadWord('layersForm', 'Layers_Record')">Download</button>
+                                        </div>
+
+                                </form>
+                        </div>
+
+                </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- FileSaver + html-docx-js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.4.1/html-docx.js"></script>
+
+        <!-- Custom JS for Download Word -->
+        <script>
+                function downloadWord(formId, filename) {
+                        const form = document.getElementById(formId);
+
+                        // Clone form to avoid modifying original
+                        const clone = form.cloneNode(true);
+
+                        // Remove file inputs before download
+                        clone.querySelectorAll('input[type="file"]').forEach(input => input.remove());
+
+                        // Convert form HTML to Word document
+                        const content = "<h2>" + clone.querySelector('h3')?.innerText + "</h2>" + clone.innerHTML;
+                        const converted = htmlDocx.asBlob(content);
+                        saveAs(converted, filename + ".docx");
+                }
+        </script>
+        <!-- Custom JS -->
+        <script src="script.js"></script>
+</body>
+
+</html>

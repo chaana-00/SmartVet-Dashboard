@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font - Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="toggle-btn" id="toggle-btn">
+      <i class='bx bx-chevron-right'></i>
+    </div>
+
+    <!-- Company Logo -->
+    <div class="logo">
+      <img src="images/favicon.png" alt="VetSmart Logo" style="width: 100px; height: auto;">
+    </div>
+
+    <h2 class="logo">VetSmart</h2>
+    <ul>
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" data-bs-toggle="collapse" href="#userMenu" role="button"
+          aria-expanded="false" aria-controls="userMenu">
+          <i class='bx bx-user'></i><span class="link-text">User Management</span>
+          <i class='bx bx-chevron-down ms-auto'></i>
+        </a>
+        <div class="collapse" id="userMenu">
+          <ul class="list-unstyled ps-4">
+            <li><a href="manage-users.html" class="d-block py-1"><i class='bx bx-plus me-2'></i>Create User</a></li>
+            <li><a href="users-list.html" class="d-block py-1"><i class='bx bx-list-ul me-2'></i>Manage Users</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#"><i class='bx bx-layer'></i><span class="link-text">Task</span></a></li>
+      <!-- <li><a href="#"><i class='bx bx-lock'></i><span class="link-text">Auth</span></a></li>
+      <li><a href="#"><i class='bx bx-bar-chart-alt-2'></i><span class="link-text">Multi Level</span></a></li>
+      <li><a href="#"><i class='bx bx-link'></i><span class="link-text">Link 1</span></a></li> -->
+      <li><a href="#"><i class='bx bx-bell'></i><span class="link-text">Notification</span></a></li>
+      <li><a href="#"><i class='bx bx-cog'></i><span class="link-text">Settings</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- <div class="input-group mb-3 search-box">
+      <span class="input-group-text bg-white"><i class='bx bx-search'></i></span>
+      <input type="text" class="form-control" placeholder="Search...">
+    </div> -->
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <!-- Search Box -->
+      <div class="input-group search-box" style="max-width: 300px;">
+        <span class="input-group-text bg-white"><i class='bx bx-search'></i></span>
+        <input type="text" class="form-control" placeholder="Search...">
+      </div>
+
+      <!-- Profile Dropdown -->
+      <div class="dropdown ms-3">
+        <button class="btn btn-light d-flex align-items-center" type="button" id="profileMenu" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class='bx bx-user-circle fs-3'></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileMenu">
+          <!-- <li><a class="dropdown-item" href="manage-users.html"><i class='bx bx-user me-2'></i>Profile</a></li> -->
+          <li><a class="dropdown-item" href="#"><i class='bx bx-log-out me-2'></i>Logout</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="card shadow-sm mb-4 p-3">
+      <h3>Admin Dashboard</h3>
+      <p><strong>Customer Progress:</strong> #### <br>
+        <span class="text-success">+9.0% Since Last Month</span>
+      </p>
+    </div>
+
+    <h3>Users</h3>
+    <table class="users-table table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Thiruni</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ranmalee</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Rasanka</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Thilini</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+
+</html>

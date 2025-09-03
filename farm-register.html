@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Register | VetSmart</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="toggle-btn" id="toggle-btn">
+            <i class='bx bx-chevron-right'></i>
+        </div>
+
+        <!-- Company Logo -->
+        <div class="logo">
+            <img src="images/favicon.png" alt="VetSmart Logo" style="width: 100px; height: auto;">
+        </div>
+        <h2 class="logo">VetSmart</h2>
+        <ul>
+            <li><a href="farm-register.html"><i class='bx bx-user'></i><span class="link-text">Farm Register</span></a>
+            </li>
+            <li><a href="add-farm-records.html"><i class='bx bx-file'></i><span class="link-text">Add Farm
+                        Records</span></a></li>
+            <!-- <li><a href="add-batch.html"><i class='bx bx-layer'></i><span class="link-text">Add Batch</span></a></li> -->
+            <li><a href="view-history.html"><i class='bx bx-folder-open'></i><span class="link-text">View
+                        History</span></a></li>
+            <!-- <li><a href="#"><i class='bx bx-bell'></i><span class="link-text">Notification</span></a></li>
+            <li><a href="#"><i class='bx bx-cog'></i><span class="link-text">Settings</span></a></li> -->
+            <li><a href="user-dashboard.html"><i class='bx bx-layer'></i><span class="link-text">Dashboard</span></a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="container mt-4">
+            <div class="card shadow-sm p-4">
+                <h3 class="mb-3">Farm Register</h3>
+                <form id="farmForm">
+                    <div class="mb-3">
+                        <label class="form-label">Farm Name</label>
+                        <input type="text" class="form-control" id="farmName" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Farm ID</label>
+                        <input type="text" class="form-control" id="farmID" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Farm Location</label>
+                        <div class="d-flex gap-2">
+                            <input type="text" class="form-control" id="farmLocation"
+                                placeholder="Search location on map" required>
+                            <div id="map" style="width: 400px; height: 200px; border: 1px solid #ccc;"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Farm Contact Numbers</label>
+                        <div class="d-flex gap-2">
+                            <input type="tel" class="form-control" id="farmContact1" placeholder="Contact 1" required>
+                            <input type="tel" class="form-control" id="farmContact2" placeholder="Contact 2">
+                            <input type="tel" class="form-control" id="farmContact3" placeholder="Contact 3">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Farm Owner Name</label>
+                        <input type="text" class="form-control" id="ownerName" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Farm Owner Contact Numbers</label>
+                        <div class="d-flex gap-2">
+                            <input type="tel" class="form-control" id="ownerContact1" placeholder="Contact 1" required>
+                            <input type="tel" class="form-control" id="ownerContact2" placeholder="Contact 2">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Farm Type</label>
+                        <select class="form-select" id="farmType" required>
+                            <option value="">Select Type</option>
+                            <option value="Broiler">Broiler</option>
+                            <option value="Layer">Layer</option>
+                            <option value="Breeder">Breeder</option>
+                            <option value="Broiler Breeder">Broiler Breeder</option>
+                            <option value="Layer Breeder">Layer Breeder</option>
+                            <option value="Broiler Buy Batch">Broiler Buy Batch</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Farm Capacity</label>
+                        <input type="number" class="form-control" id="farmCapacity" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Note</label>
+                        <textarea class="form-control" id="farmNote" rows="3"></textarea>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" id="printBtn" class="btn btn-success">Print / Download Doc</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.4.1/html-docx.js"></script>
+
+    <!-- Use same farm-register.html but update JS part -->
+    <!-- Your other scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.4.1/html-docx.js"></script>
+
+    <script>
+        let map, marker, geocoder;
+
+        function initMap() {
+            geocoder = new google.maps.Geocoder();
+            const defaultPos = { lat: 7.8731, lng: 80.7718 }; // Center on Sri Lanka
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: defaultPos,
+                zoom: 7,
+                mapTypeId: 'satellite'
+            });
+
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                position: defaultPos
+            });
+
+            // Google Places Autocomplete
+            const input = document.getElementById("farmLocation");
+            const autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo("bounds", map);
+
+            autocomplete.addListener("place_changed", function () {
+                const place = autocomplete.getPlace();
+                if (!place.geometry) return;
+                map.setCenter(place.geometry.location);
+                map.setZoom(15);
+                marker.setPosition(place.geometry.location);
+                document.getElementById("farmLocation").value = place.formatted_address;
+            });
+
+            // Update textbox when marker is dragged
+            marker.addListener("dragend", function () {
+                const pos = marker.getPosition();
+                geocoder.geocode({ location: pos }, function (results, status) {
+                    if (status === "OK" && results[0]) {
+                        document.getElementById("farmLocation").value = results[0].formatted_address;
+                    }
+                });
+            });
+        }
+
+        // Load map on window load
+        window.onload = initMap;
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

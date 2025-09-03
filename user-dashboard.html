@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard | VetSmart</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font - Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="toggle-btn" id="toggle-btn">
+      <i class='bx bx-chevron-right'></i>
+    </div>
+
+    <!-- Company Logo -->
+    <div class="logo">
+      <img src="images/favicon.png" alt="VetSmart Logo" style="width: 100px; height: auto;">
+    </div>
+
+    <h2 class="logo">VetSmart</h2>
+    <ul>
+      <li><a href="farm-register.html"><i class='bx bx-user'></i><span class="link-text">Farm Register</span></a></li>
+      <li><a href="add-farm-records.html"><i class='bx bx-file'></i><span class="link-text">Add Farm Records</span></a>
+      </li>
+      <!-- <li><a href="add-batch.html"><i class='bx bx-layer'></i><span class="link-text">Add Batch</span></a></li> -->
+      <li><a href="view-history.html"><i class='bx bx-folder-open'></i><span class="link-text">View History</span></a>
+      </li>
+      <!-- <li><a href="#"><i class='bx bx-bell'></i><span class="link-text">Notification</span></a></li>
+      <li><a href="#"><i class='bx bx-cog'></i><span class="link-text">Settings</span></a></li> -->
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Topbar -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <!-- Search Box -->
+      <div class="input-group search-box" style="max-width: 300px;">
+        <span class="input-group-text bg-white"><i class='bx bx-search'></i></span>
+        <input type="text" class="form-control" placeholder="Search...">
+      </div>
+
+      <!-- Profile Dropdown -->
+      <div class="dropdown ms-3">
+        <button class="btn btn-light d-flex align-items-center" type="button" id="profileMenu" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class='bx bx-user-circle fs-3'></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileMenu">
+          <li><a class="dropdown-item" href="#"><i class='bx bx-user me-2'></i>Profile</a></li>
+          <li><a class="dropdown-item" href="#"><i class='bx bx-log-out me-2'></i>Logout</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="card shadow-sm mb-4 p-3">
+      <h3>Welcome User</h3>
+      <p>Here you can manage farms and batches, and view history of your records.</p>
+    </div>
+
+    <!-- Example Table -->
+    <h3>Recent Batches</h3>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Batch Name</th>
+          <th>Farm</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Batch A</td>
+          <td>Farm 1</td>
+          <td>2025-08-30</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Batch B</td>
+          <td>Farm 2</td>
+          <td>2025-08-29</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+
+</html>
