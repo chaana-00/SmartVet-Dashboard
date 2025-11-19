@@ -4,7 +4,7 @@ session_start();
 // Database connection
 $servername = "localhost";
 $username = "root"; // default WAMP root user
-$password = "";     // leave empty unless you set one
+$password = "1234";     // leave empty unless you set one
 $dbname = "vetsmartdb";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

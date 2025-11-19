@@ -4,7 +4,7 @@ session_start();
 // Database connection
 $servername = "localhost";
 $username   = "root";
-$password   = "";
+$password   = "1234";
 $dbname     = "vetsmartdb";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

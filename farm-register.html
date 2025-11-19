@@ -37,11 +37,14 @@
             </li>
             <li><a href="add-farm-records.html"><i class='bx bx-file'></i><span class="link-text">Add Farm
                         Records</span></a></li>
-      <li><a href="add-batch-details.html"><i class='bx bx-card'></i><span class="link-text">Add Batch Details</span></a></li>
-            <li><a href="view-batch-details.html" class="active"><i class='bx bx-folder-open'></i><span class="link-text">View Batch Details</span></a></li>
+            <li><a href="add-batch-details.html"><i class='bx bx-card'></i><span class="link-text">Add Batch
+                        Details</span></a></li>
+            <li><a href="view-batch-details.html" class="active"><i class='bx bx-folder-open'></i><span
+                        class="link-text">View Batch Details</span></a></li>
             <li><a href="view-history.html"><i class='bx bx-folder-open'></i><span class="link-text">View
                         History</span></a></li>
-            <li><a href="notifications.html" class="active"><i class='bx bx-bell'></i><span class="link-text">Notifications</span></a></li>
+            <li><a href="notifications.html" class="active"><i class='bx bx-bell'></i><span
+                        class="link-text">Notifications</span></a></li>
             <!-- <li><a href="#"><i class='bx bx-bell'></i><span class="link-text">Notification</span></a></li>
             <li><a href="#"><i class='bx bx-cog'></i><span class="link-text">Settings</span></a></li> -->
             <li><a href="user-dashboard.html"><i class='bx bx-layer'></i><span class="link-text">Dashboard</span></a>
@@ -68,7 +71,7 @@
                     <div class="mb-3">
                         <label class="form-label">Farm Location</label>
                         <div class="d-flex gap-2">
-                            <input type="text" class="form-control" id="farmLocation"
+                            <input type="text" class="form-control" id="farmLocation" name="farm_location"
                                 placeholder="Search location on map" required>
                             <div id="map" style="width: 400px; height: 200px; border: 1px solid #ccc;"></div>
                         </div>
@@ -140,7 +143,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.4.1/html-docx.js"></script>
 
-    <script>
+    <!-- <script>
         let map, marker, geocoder;
 
         function initMap() {
@@ -186,8 +189,73 @@
 
         // Load map on window load
         window.onload = initMap;
+    </script> -->
+
+
+
+
+
+
+    <!-- <script type="text/javascript">
+        function initAutocomplete() {
+            const input = document.getElementById("farmLocation");
+
+            const autocomplete = new google.maps.places.Autocomplete(input, {
+                fields: ["formatted_address", "geometry"],
+            });
+
+            autocomplete.addListener("place_changed", function () {
+                const place = autocomplete.getPlace();
+
+                if (!place.geometry) {
+                    alert("No details available for this location.");
+                    return;
+                }
+
+                // Fill input with formatted address
+                document.getElementById("farmLocation").value = place.formatted_address;
+            });
+        }
+
+        // Initialize autocomplete after page load
+        window.addEventListener("load", initAutocomplete);
+    </script> -->
+
+
+
+
+    <script>
+        function enablePlaceDropdown() {
+            const input = document.getElementById("farmLocation");
+
+            // Enable Google Places dropdown autocomplete
+            const autocomplete = new google.maps.places.Autocomplete(input, {
+                types: ["geocode"],
+                fields: ["formatted_address", "geometry"]
+            });
+
+            autocomplete.addListener("place_changed", function () {
+                const place = autocomplete.getPlace();
+
+                if (!place.geometry) {
+                    console.log("No details available for this input.");
+                    return;
+                }
+
+                // Auto-fill the formatted address
+                input.value = place.formatted_address;
+            });
+        }
+
+        // Load autocomplete when page fully loads
+        window.onload = enablePlaceDropdown;
     </script>
+
+
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+
+
 
     <!-- Custom JS -->
     <script src="script.js"></script>
