@@ -57,15 +57,15 @@
         <div class="container mt-4">
             <div class="card shadow-sm p-4">
                 <h3 class="mb-3">Farm Register</h3>
-                <form id="farmForm">
+                <form id="farmForm" action="./farm-register.php" method="post">
                     <div class="mb-3">
                         <label class="form-label">Farm Name</label>
-                        <input type="text" class="form-control" id="farmName" required>
+                        <input type="text" class="form-control" name="farm_name" id="farmName" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Farm ID</label>
-                        <input type="text" class="form-control" id="farmID" required>
+                        <input type="text" class="form-control" name="farm_id" id="farmID" required>
                     </div>
 
                     <div class="mb-3">
@@ -81,9 +81,9 @@
                     <div class="mb-3">
                         <label class="form-label">Farm Contact Numbers</label>
                         <div class="d-flex gap-2">
-                            <input type="tel" class="form-control" id="farmContact1" placeholder="Contact 1" required>
-                            <input type="tel" class="form-control" id="farmContact2" placeholder="Contact 2">
-                            <input type="tel" class="form-control" id="farmContact3" placeholder="Contact 3">
+                            <input type="tel" class="form-control" name="farm_contact1" id="farmContact1" placeholder="Contact 1" required>
+                            <input type="tel" class="form-control" name="farm_contact2" id="farmContact2" placeholder="Contact 2">
+                            <input type="tel" class="form-control" name="farm_contact3" id="farmContact3" placeholder="Contact 3">
                         </div>
                     </div>
 
