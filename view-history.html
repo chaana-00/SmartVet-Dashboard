@@ -2,109 +2,177 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>View History | VetSmart</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Farm History | VetSmart</title>
 
-  <!-- Google Font - Outfit -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Boxicons -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="sidebar" id="sidebar">
-    <div class="toggle-btn" id="toggle-btn"><i class='bx bx-chevron-right'></i></div>
 
-    <!-- Company Logo -->
-    <div class="logo">
-      <img src="images/FCL.gif" alt="VetSmart Logo" style="width: 100px; height: auto;">
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <div class="toggle-btn" id="toggle-btn">
+            <i class='bx bx-chevron-right'></i>
+        </div>
+
+        <div class="logo">
+            <img src="images/FCL.gif" alt="VetSmart Logo" style="width: 100px; height: auto;">
+        </div>
+
+        <h2 class="logo">VetSmart</h2>
+
+        <ul>
+            <li><a href="add-farm-records.html" class="highlight">
+                    <i class='bx bx-file'></i><span class="link-text">Add Farm Records</span>
+                </a></li>
+            <li><a href="create-prescription.html" class="button">
+                    <i class='bx bx-file'></i><span class="link-text">Create Prescription</span>
+                </a></li>
+            <li><a href="add-batch-details.html"><i class='bx bx-card'></i><span class="link-text">Add Batch
+                        Details</span></a></li>
+            <li><a href="view-batch-details.html" class="active"><i class='bx bx-folder-open'></i><span
+                        class="link-text">View Batch Details</span></a></li>
+            <li><a href="view-batch-details.html" class="active"><i class='bx bx-folder-open'></i><span
+                        class="link-text">View Batch Details</span></a></li>
+            <li><a href="farm-register.html"><i class='bx bx-user'></i><span class="link-text">Farm Register</span></a>
+            </li>
+            <!-- <li><a href="add-farm-records.html"><i class='bx bx-file'></i><span class="link-text">Add Farm
+                        Records</span></a></li> -->
+            <li><a href="view-history.html"><i class='bx bx-folder-open'></i><span class="link-text">View
+                        History</span></a></li>
+            <li><a href="notifications.html" class="active"><i class='bx bx-bell'></i><span
+                        class="link-text">Notifications</span></a></li>
+            <!-- <li><a href="#"><i class='bx bx-bell'></i><span class="link-text">Notification</span></a></li>
+            <li><a href="#"><i class='bx bx-cog'></i><span class="link-text">Settings</span></a></li> -->
+            <li><a href="user-dashboard.html"><i class='bx bx-layer'></i><span class="link-text">Dashboard</span></a>
+            </li>
+        </ul>
     </div>
 
-    <h2 class="logo">VetSmart</h2>
-    <ul>
-      <li><a href="farm-register.html"><i class='bx bx-user'></i><span class="link-text">Farm Register</span></a></li>
-      <li><a href="add-farm-records.html"><i class='bx bx-file'></i><span class="link-text">Add Farm Records</span></a>
-      </li>
-      <li><a href="add-batch-details.html"><i class='bx bx-card'></i><span class="link-text">Add Batch Details</span></a></li>
-      <li><a href="view-batch-details.html" class="active"><i class='bx bx-folder-open'></i><span class="link-text">View Batch Details</span></a></li>
-      <li><a href="view-history.html"><i class='bx bx-folder-open'></i><span class="link-text">View History</span></a>
-      </li>
-      <!-- <li><a href="#"><i class='bx bx-bell'></i><span class="link-text">Notification</span></a></li>
-      <li><a href="#"><i class='bx bx-cog'></i><span class="link-text">Settings</span></a></li> -->
-      <li><a href="user-dashboard.html"><i class='bx bx-layer'></i><span class="link-text">Dashboard</span></a></li>
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <div class="container mt-4">
+            <div class="card shadow-sm p-4">
 
-    </ul>
-  </div>
+                <h3 class="mb-4">View Registered Farm History</h3>
 
-  <div class="main">
-    <div class="container mt-4">
-      <div class="card shadow-sm p-4">
-        <h3>View Farm History</h3>
-        <table class="table table-striped table-bordered" id="farmTable">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Farm Name</th>
-              <th>Farm ID</th>
-              <th>Owner</th>
-              <th>Type</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- AJAX loaded -->
-          </tbody>
-        </table>
-      </div>
+                <!-- Dropdown -->
+                <div class="mb-3">
+                    <label class="form-label">Select Farm ID</label>
+                    <select id="farmIdDropdown" class="form-select">
+                        <option value="">-- Select Farm ID --</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary mb-3" onclick="searchFarm()">Search</button>
+
+                <div id="message" class="text-danger fw-bold"></div>
+
+                <!-- Table -->
+                <div class="table-responsive mt-4">
+                    <table id="resultTable" class="table table-bordered table-striped" style="display:none;">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Farm Name</th>
+                                <th>Farm ID</th>
+                                <th>Location</th>
+                                <th>Contact 1</th>
+                                <th>Contact 2</th>
+                                <th>Contact 3</th>
+                                <th>Owner Name</th>
+                                <th>Owner Contact 1</th>
+                                <th>Owner Contact 2</th>
+                                <th>Farm Type</th>
+                                <th>Capacity</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody id="farmData"></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script>
-    // Load farms
-    fetch("get-farms.php")
-      .then(res => res.json())
-      .then(data => {
-        const tbody = document.querySelector("#farmTable tbody");
-        data.forEach((farm, i) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-          <td>${i + 1}</td>
-          <td><button class="btn btn-link viewBtn" data-id="${farm.id}">${farm.farm_name}</button></td>
-          <td>${farm.farm_id}</td>
-          <td>${farm.owner_name}</td>
-          <td>${farm.farm_type}</td>
-          <td><button class="btn btn-success downloadBtn" data-id="${farm.id}">Download</button></td>
-        `;
-          tbody.appendChild(tr);
-        });
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-        // View farm details
-        document.querySelectorAll(".viewBtn").forEach(btn => {
-          btn.addEventListener("click", () => {
-            const id = btn.dataset.id;
-            window.open(`view-farm.php?id=${id}`, "_blank");
-          });
-        });
+    <!-- Load Farm IDs -->
+    <script>
+        window.onload = function () {
+            fetch("view-farm.php?load_ids=1")
+                .then(res => res.json())
+                .then(data => {
+                    let dropdown = document.getElementById("farmIdDropdown");
+                    data.forEach(id => {
+                        let option = document.createElement("option");
+                        option.value = id;
+                        option.textContent = id;
+                        dropdown.appendChild(option);
+                    });
+                });
+        }
 
-        // Download farm
-        document.querySelectorAll(".downloadBtn").forEach(btn => {
-          btn.addEventListener("click", () => {
-            const id = btn.dataset.id;
-            window.open(`download-farm.php?id=${id}`, "_blank");
-          });
-        });
-      });
-  </script>
+        function searchFarm() {
+            let farmId = document.getElementById("farmIdDropdown").value;
 
-  <!-- Custom JS -->
-  <script src="script.js"></script>
+            if (farmId === "") {
+                alert("Please select a Farm ID.");
+                return;
+            }
+
+            fetch("view-farm.php?farm_id=" + farmId)
+                .then(res => res.json())
+                .then(data => {
+                    let table = document.getElementById("resultTable");
+                    let tbody = document.getElementById("farmData");
+                    let message = document.getElementById("message");
+
+                    tbody.innerHTML = "";
+
+                    if (data.status === "error") {
+                        message.innerHTML = data.message;
+                        table.style.display = "none";
+                    } else {
+                        message.innerHTML = "";
+                        let farm = data.data;
+
+                        tbody.innerHTML = `
+                            <tr>
+                                <td>${farm.farm_name}</td>
+                                <td>${farm.farm_id}</td>
+                                <td>${farm.farm_location}</td>
+                                <td>${farm.farm_contact1}</td>
+                                <td>${farm.farm_contact2}</td>
+                                <td>${farm.farm_contact3}</td>
+                                <td>${farm.owner_name}</td>
+                                <td>${farm.owner_contact1}</td>
+                                <td>${farm.owner_contact2}</td>
+                                <td>${farm.farm_type}</td>
+                                <td>${farm.farm_capacity}</td>
+                                <td>${farm.note}</td>
+                            </tr>
+                        `;
+
+                        table.style.display = "table";
+                    }
+                });
+        }
+    </script>
+
+    <script src="script.js"></script>
+
 </body>
-
 </html>

@@ -32,10 +32,16 @@
     </div>
     <h2 class="logo">VetSmart</h2>
     <ul>
-      <li><a href="farm-register.html"><i class='bx bx-user'></i><span class="link-text">Farm Register</span></a></li>
-      <li><a href="add-farm-records.html"><i class='bx bx-file'></i><span class="link-text">Add Farm Records</span></a></li>
-      <li><a href="add-batch-details.html"><i class='bx bx-card checklist'></i><span class="link-text">Add Batch Details</span></a></li>
+      <li><a href="add-farm-records.html" class="highlight">
+          <i class='bx bx-file'></i><span class="link-text">Add Farm Records</span>
+        </a></li>
+      <li><a href="create-prescription.html" class="button">
+          <i class='bx bx-file'></i><span class="link-text">Create Prescription</span>
+        </a></li>
+              <li><a href="add-batch-details.html"><i class='bx bx-card checklist'></i><span class="link-text">Add Batch Details</span></a></li>
       <li><a href="view-batch-details.html" class="active"><i class='bx bx-folder-open'></i><span class="link-text">View Batch Details</span></a></li>
+      <li><a href="farm-register.html"><i class='bx bx-user'></i><span class="link-text">Farm Register</span></a></li>
+      <!-- <li><a href="add-farm-records.html"><i class='bx bx-file'></i><span class="link-text">Add Farm Records</span></a></li> -->
       <li><a href="view-history.html"><i class='bx bx-folder-open'></i><span class="link-text">View History</span></a></li>
       <li><a href="notifications.html" class="active"><i class='bx bx-bell'></i><span class="link-text">Notifications</span></a></li>
       <li><a href="user-dashboard.html"><i class='bx bx-layer'></i><span class="link-text">Dashboard</span></a></li>
@@ -76,10 +82,25 @@
               <select name="farm_name" class="form-select" required>
                 <option value="">Select Farm</option>
                 <?php
-                  $conn = new mysqli("localhost","root","","vetsmartdb");
+                  $conn = new mysqli("localhost","root","1234","vetsmartdb");
                   $result = $conn->query("SELECT id, farm_name FROM farms ORDER BY farm_name ASC");
                   while($row = $result->fetch_assoc()){
                     echo "<option value='".$row['id']."'>".$row['farm_name']."</option>";
+                  }
+                  $conn->close();
+                ?>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Select Batch</label>
+              <select name="batch_name" class="form-select" required>
+                <option value="">Select Batch</option>
+                <?php
+                  $conn = new mysqli("localhost","root","1234","vetsmartdb");
+                  $result = $conn->query("SELECT id, batch_name FROM farms ORDER BY batch_name DEC");
+                  while($row = $result->fetch_assoc()){
+                    echo "<option value='".$row['id']."'>".$row['batch_name']."</option>";
                   }
                   $conn->close();
                 ?>
@@ -135,6 +156,21 @@
                   $result = $conn->query("SELECT id, farm_name FROM farms ORDER BY farm_name ASC");
                   while($row = $result->fetch_assoc()){
                     echo "<option value='".$row['id']."'>".$row['farm_name']."</option>";
+                  }
+                  $conn->close();
+                ?>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Select Batch</label>
+              <select name="batch_name" class="form-select" required>
+                <option value="">Select Batch</option>
+                <?php
+                  $conn = new mysqli("localhost","root","1234","vetsmartdb");
+                  $result = $conn->query("SELECT id, batch_name FROM farms ORDER BY batch_name DEC");
+                  while($row = $result->fetch_assoc()){
+                    echo "<option value='".$row['id']."'>".$row['batch_name']."</option>";
                   }
                   $conn->close();
                 ?>

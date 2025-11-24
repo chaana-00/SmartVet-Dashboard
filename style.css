@@ -104,6 +104,23 @@ body {
   transition: 0.3s;
 }
 
+.sidebar ul li a.highlight {
+  background-color: #019a34;
+  color: white;
+  border-radius: 6px;
+  /* box-shadow: 0 0 15px rgba(13, 110, 253, 0.7); */
+  font-weight: 600;
+}
+
+.sidebar ul li a.button {
+  background-color: #012f9a;
+  color: white;
+  border-radius: 6px;
+  /* box-shadow: 0 0 15px rgba(13, 110, 253, 0.7); */
+  font-weight: 600;
+}
+
+
 .sidebar ul li a:hover {
   background: #1a2d4f;
 }

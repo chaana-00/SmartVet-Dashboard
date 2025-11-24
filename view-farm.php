@@ -1,23 +1,49 @@
 <?php
-$conn = new mysqli("localhost","root","","vetsmartdb");
-$id = $_GET['id'];
-$stmt = $conn->prepare("SELECT * FROM farms WHERE id=?");
-$stmt->bind_param("i",$id);
-$stmt->execute();
-$result = $stmt->get_result();
-$farm = $result->fetch_assoc();
+// DB connection
+$servername = "localhost";
+$username = "root";
+$password = "1234";
+$dbname = "vetsmartdb";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) { 
+    die(json_encode(["status" => "error", "message" => "DB connection failed"]));
+}
+
+// ------------------------------------------------------
+// 1. Load farm IDs for dropdown
+// ------------------------------------------------------
+if (isset($_GET['load_ids'])) {
+    $sql = "SELECT farm_id FROM farms ORDER BY farm_id DESC";
+    $result = $conn->query($sql);
+
+    $ids = [];
+    while ($row = $result->fetch_assoc()) {
+        $ids[] = $row['farm_id'];
+    }
+
+    echo json_encode($ids);
+    exit;
+}
+
+// ------------------------------------------------------
+// 2. Fetch specific farm details
+// ------------------------------------------------------
+if (isset($_GET['farm_id'])) {
+    $farm_id = $_GET['farm_id'];
+
+    $sql = "SELECT * FROM farms WHERE farm_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $farm_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 0) {
+        echo json_encode(["status" => "error", "message" => "Farm ID not found"]);
+    } else {
+        echo json_encode(["status" => "success", "data" => $result->fetch_assoc()]);
+    }
+    exit;
+}
+
 ?>
-<!DOCTYPE html>
-<html>
-<head><title>Farm Details</title></head>
-<body>
-<h2><?php echo $farm['farm_name']; ?></h2>
-<p><strong>Farm ID:</strong> <?php echo $farm['farm_id']; ?></p>
-<p><strong>Location:</strong> <?php echo $farm['farm_location']; ?></p>
-<p><strong>Owner:</strong> <?php echo $farm['owner_name']; ?></p>
-<p><strong>Contacts:</strong> <?php echo $farm['farm_contact1'] . ', ' . $farm['farm_contact2'] . ', ' . $farm['farm_contact3']; ?></p>
-<p><strong>Type:</strong> <?php echo $farm['farm_type']; ?></p>
-<p><strong>Capacity:</strong> <?php echo $farm['farm_capacity']; ?></p>
-<p><strong>Note:</strong> <?php echo $farm['note']; ?></p>
-</body>
-</html>
