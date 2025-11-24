@@ -102,34 +102,52 @@
                     </table>
                 </div>
 
+                
+
+                <form action="download-all-farms.php" method="post">
+                    <button type="submit"
+                        style="background:#007bff;color:white;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;display:none;">
+                        Download All Farm Records
+                    </button>
+
+                    <!-- Hidden download button (show after search) -->
+                <button id="downloadBtn" class="btn btn-success mt-3" style="display:none;" onclick="downloadWord()">
+                    Download as Word Document
+                </button>
+                </form>
+
+
             </div>
         </div>
     </div>
 
-    <!-- BOOTSTRAP JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- External JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.4.1/html-docx.js"></script>
 
     <!-- Load Farm IDs -->
     <script>
+        let lastFarmData = null;
+
         window.onload = function () {
             fetch("view-farm.php?load_ids=1")
                 .then(res => res.json())
                 .then(data => {
                     let dropdown = document.getElementById("farmIdDropdown");
                     data.forEach(id => {
-                        let option = document.createElement("option");
-                        option.value = id;
-                        option.textContent = id;
-                        dropdown.appendChild(option);
+                        let opt = document.createElement("option");
+                        opt.value = id;
+                        opt.textContent = id;
+                        dropdown.appendChild(opt);
                     });
                 });
-        }
+        };
 
         function searchFarm() {
             let farmId = document.getElementById("farmIdDropdown").value;
 
             if (farmId === "") {
-                alert("Please select a Farm ID.");
+                alert("Please select a farm ID.");
                 return;
             }
 
@@ -139,15 +157,18 @@
                     let table = document.getElementById("resultTable");
                     let tbody = document.getElementById("farmData");
                     let message = document.getElementById("message");
+                    let downloadBtn = document.getElementById("downloadBtn");
 
                     tbody.innerHTML = "";
 
                     if (data.status === "error") {
                         message.innerHTML = data.message;
                         table.style.display = "none";
+                        downloadBtn.style.display = "none";
                     } else {
                         message.innerHTML = "";
                         let farm = data.data;
+                        lastFarmData = farm;
 
                         tbody.innerHTML = `
                             <tr>
@@ -167,12 +188,46 @@
                         `;
 
                         table.style.display = "table";
+                        downloadBtn.style.display = "inline-block";
                     }
                 });
         }
+
+        function downloadWord() {
+
+            if (!lastFarmData) {
+                alert("Search a farm record first.");
+                return;
+            }
+
+            let farm = lastFarmData;
+
+            let content = `
+                <h2 style="text-align:center;">Farm Registration Details</h2>
+                <hr>
+                <p><b>Farm Name:</b> ${farm.farm_name}</p>
+                <p><b>Farm ID:</b> ${farm.farm_id}</p>
+                <p><b>Location:</b> ${farm.farm_location}</p>
+                <p><b>Farm Contacts:</b>
+                    <br>1) ${farm.farm_contact1}
+                    <br>2) ${farm.farm_contact2}
+                    <br>3) ${farm.farm_contact3}
+                </p>
+                <p><b>Owner Name:</b> ${farm.owner_name}</p>
+                <p><b>Owner Contacts:</b>
+                    <br>1) ${farm.owner_contact1}
+                    <br>2) ${farm.owner_contact2}
+                </p>
+                <p><b>Farm Type:</b> ${farm.farm_type}</p>
+                <p><b>Capacity:</b> ${farm.farm_capacity}</p>
+                <p><b>Note:</b> ${farm.note}</p>
+            `;
+
+            let blob = window.htmlDocx.asBlob(content);
+            saveAs(blob, farm.farm_id + "_FarmDetails.docx");
+        }
     </script>
 
-    <script src="script.js"></script>
-
 </body>
+
 </html>

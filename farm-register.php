@@ -51,10 +51,11 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    echo json_encode([
-        "status" => "success", 
-        "message" => "Farm registered successfully"
-    ]);
+
+    // 🔥 Redirect to View History page
+    header("Location: view-history.html");
+    exit();
+
 } else {
     echo json_encode([
         "status" => "error", 
