@@ -1,60 +1,109 @@
 <?php
-// Load PhpWord (manual installation)
-require_once __DIR__ . '/vendor/PhpOffice/PhpWord/bootstrap.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
 
-
-// Database connection
-$servername = "localhost"; 
-$username = "root"; 
-$password = "1234"; 
-$dbname = "vetsmartdb"; 
+// DB connection
+$servername = "localhost";
+$username   = "root";
+$password   = "1234";
+$dbname     = "vetsmartdb";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check DB
 if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
+    die("DB connection failed: " . $conn->connect_error);
 }
 
-// Fetch all farm records
+// Fetch farms
 $sql = "SELECT * FROM farms ORDER BY id DESC";
 $result = $conn->query($sql);
 
 // Create Word document
-$phpword = new PhpWord();
-$section = $phpword->addSection();
+$phpWord = new PhpWord();
+$section = $phpWord->addSection();
 
-$section->addTitle("All Farm Registration Records", 1);
+// ------------------------------------
+// COMPANY LOGO
+// ------------------------------------
+$section->addImage(
+    './asset/fcl-logo.png',                  // <-- Set your correct path
+    [
+        'width' => 400,
+        'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER
+    ]
+);
+
+// ------------------------------------
+// COMPANY ADDRESS
+// ------------------------------------
+$section->addText(
+    "No. 78, Industrial Zone, Katuwana, Homagama, Sri Lanka.",
+    ['name' => 'Arial', 'size' => 11],
+    ['alignment' => 'center']
+);
+
+$section->addText(
+    "Tel: +94 (0) 11 2893922 | Fax: +94 (0) 11 2893680\n | Email: info@farmchemie.com",
+    ['name' => 'Arial', 'size' => 11],
+    ['alignment' => 'center']
+);
+
+$section->addText(
+    "Web: www.farmchemie.com",
+    ['name' => 'Arial', 'size' => 11],
+    ['alignment' => 'center']
+);
+
 $section->addTextBreak(1);
 
-// Create table
+// ------------------------------------
+// HEADING (BOLD)
+// ------------------------------------
+$section->addText(
+    "All Farm Registration Records",
+    ['name' => 'Arial', 'size' => 16, 'bold' => true],
+    ['alignment' => 'center']
+);
+
+$section->addTextBreak(1);
+
+// System note
+$section->addText(
+    "This record is system generated!\nCopyright © Farmchemie Private Limited.",
+    ['italic' => true, 'size' => 10],
+    ['alignment' => 'center']
+);
+
+$section->addTextBreak(1);
+
+// ------------------------------------
+// TABLE
+// ------------------------------------
 $table = $section->addTable([
-    'borderSize' => 6,
-    'borderColor' => '000000',
+    'borderSize'  => 6,
+    'borderColor' => '000000'
 ]);
 
-// Add table header
 $table->addRow();
-$table->addCell(1500)->addText("Farm ID");
-$table->addCell(2500)->addText("Owner Name");
-$table->addCell(2500)->addText("Farm Name");
-$table->addCell(2500)->addText("Location");
-$table->addCell(2000)->addText("Mobile");
-$table->addCell(2500)->addText("Registered Date");
+$table->addCell(1500)->addText("Farm ID", ['bold' => true]);
+$table->addCell(2500)->addText("Owner Name", ['bold' => true]);
+$table->addCell(2500)->addText("Farm Name", ['bold' => true]);
+$table->addCell(2500)->addText("Address", ['bold' => true]);
+$table->addCell(2000)->addText("Mobile", ['bold' => true]);
+$table->addCell(2500)->addText("Registered Date", ['bold' => true]);
 
-// Add data rows
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+
         $table->addRow();
         $table->addCell(1500)->addText($row['farm_id']);
         $table->addCell(2500)->addText($row['owner_name']);
         $table->addCell(2500)->addText($row['farm_name']);
-        $table->addCell(2500)->addText($row['location']);
-        $table->addCell(2000)->addText($row['mobile']);
-        $table->addCell(2500)->addText($row['reg_date']);
+        $table->addCell(2500)->addText($row['farm_location']);
+        $table->addCell(2000)->addText($row['owner_contact1']);
+        $table->addCell(2500)->addText($row['created_at']);
     }
 } else {
     $section->addText("No farm records found.");
@@ -62,19 +111,19 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 
-// Save file to temporary path
+// Save file
 $filename = "All-Farm-Records.docx";
-$filepath = tempnam(sys_get_temp_dir(), 'docx');
+$tempFile = tempnam(sys_get_temp_dir(), 'docx');
 
 $writer = IOFactory::createWriter($phpWord, 'Word2007');
-$writer->save($filepath);
+$writer->save($tempFile);
 
-// Output to browser for download
+// Send to browser
 header("Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document");
 header("Content-Disposition: attachment; filename=\"$filename\"");
-header("Content-Length: " . filesize($filepath));
+header("Content-Length: " . filesize($tempFile));
 
-readfile($filepath);
-unlink($filepath);  // delete temp file
+readfile($tempFile);
+unlink($tempFile);
 exit;
 ?>
