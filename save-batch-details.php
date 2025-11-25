@@ -32,7 +32,7 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    echo "<script>alert('Batch Details Saved Successfully'); window.location='view-batch-details.html';</script>";
+    echo "<script>alert('Batch Details Saved Successfully'); window.location='view-batch-details.php';</script>";
 } else {
     echo "Error: " . $stmt->error;
 }

@@ -14,11 +14,18 @@ $farm_location = isset($_GET['farm_location']) ? $_GET['farm_location'] : '';
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>View Batch Details | VetSmart</title>
 
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <!-- Google Font - Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -55,7 +62,7 @@ $farm_location = isset($_GET['farm_location']) ? $_GET['farm_location'] : '';
                         class="link-text">Notifications</span></a></li> -->
             <!-- <li><a href="#"><i class='bx bx-bell'></i><span class="link-text">Notification</span></a></li>
             <li><a href="#"><i class='bx bx-cog'></i><span class="link-text">Settings</span></a></li> -->
-            <li><a href="user-dashboard.html"><i class='bx bx-layer'></i><span class="link-text">Dashboard</span></a>
+            <li><a href="user-dashboard.php"><i class='bx bx-layer'></i><span class="link-text">Dashboard</span></a>
             </li>
     </ul>
   </div>
@@ -79,7 +86,7 @@ $farm_location = isset($_GET['farm_location']) ? $_GET['farm_location'] : '';
 
               <?php
               $conn = new mysqli("localhost", "root", "1234", "vetsmartdb");
-              $result = $conn->query("SELECT id, farm_name FROM farms ORDER BY farm_name ASC");
+              $result = $conn->query("SELECT id, farm_name FROM farms ORDER BY farm_name DESC");
 
               while ($row = $result->fetch_assoc()) {
                 $selected = ($farm_id == $row['id']) ? "selected" : "";
@@ -96,7 +103,7 @@ $farm_location = isset($_GET['farm_location']) ? $_GET['farm_location'] : '';
               <option value="">Select Farm Location</option>
 
               <?php
-              $result2 = $conn->query("SELECT DISTINCT farm_location FROM farms ORDER BY farm_location ASC");
+              $result2 = $conn->query("SELECT DISTINCT farm_location FROM farms ORDER BY farm_location DESC");
 
               while ($row = $result2->fetch_assoc()) {
                 $selected = ($farm_location == $row['farm_location']) ? "selected" : "";
@@ -120,9 +127,11 @@ $farm_location = isset($_GET['farm_location']) ? $_GET['farm_location'] : '';
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h5 class="text-success">Batch Records</h5>
 
-        <button class="btn btn-primary" onclick="downloadWord('batchTable', 'Batch_Details_Report')">
-          <i class='bx bx-download me-2'></i>Download All Data
+        <button class="btn btn-primary"
+          onclick="window.location.href='download-selected-batch.php?farm_id=<?= $farm_id ?>&farm_location=<?= $farm_location ?>'">
+          <i class='bx bx-download me-2'></i>Download Selected Data
         </button>
+
       </div>
 
       <div class="table-responsive" id="batchTable">
@@ -162,7 +171,8 @@ $farm_location = isset($_GET['farm_location']) ? $_GET['farm_location'] : '';
             if ($farm_location != "") {
               $query .= " AND f.farm_location = '$farm_location'";
             }
-
+            // Sort by farm_name and farm_id in descending order
+            $query .= " ORDER BY f.farm_name DESC, b.farm_id DESC";
             $result = $conn->query($query);
 
             if ($result->num_rows > 0) {
