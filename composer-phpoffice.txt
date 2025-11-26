@@ -1,0 +1,24 @@
+Microsoft Windows [Version 10.0.26100.6725]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\wamp64\www\SmartVet-Dashboard>composer require phpoffice/phpword
+./composer.json has been created
+Running composer update phpoffice/phpword
+Loading composer repositories with package information
+Updating dependencies
+Lock file operations: 2 installs, 0 updates, 0 removals
+  - Locking phpoffice/math (0.3.0)
+  - Locking phpoffice/phpword (1.4.0)
+Writing lock file
+Installing dependencies from lock file (including require-dev)
+Package operations: 2 installs, 0 updates, 0 removals
+  - Downloading phpoffice/math (0.3.0)
+  - Downloading phpoffice/phpword (1.4.0)
+  - Installing phpoffice/math (0.3.0): Extracting archive
+  - Installing phpoffice/phpword (1.4.0): Extracting archive
+1 package suggestions were added by new dependencies, use `composer suggest` to see details.
+Generating autoload files
+No security vulnerability advisories found.
+Using version ^1.4 for phpoffice/phpword
+
+C:\wamp64\www\SmartVet-Dashboard>
