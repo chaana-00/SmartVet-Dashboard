@@ -46,7 +46,6 @@ $feed_intake       = clean($_POST['feed_intake'] ?? '');
 $mortality         = (int)($_POST['mortality'] ?? 0);
 $mortality_percent = (float)($_POST['mortality_percent'] ?? 0);
 
-// Text fields
 $complain       = clean($_POST['complain'] ?? '');
 $clinical_signs = clean($_POST['clinical_signs'] ?? '');
 $post_changes   = clean($_POST['post_mortem_changes'] ?? '');
@@ -56,6 +55,7 @@ $test_report    = clean($_POST['test_report'] ?? '');
 $recommendation = clean($_POST['recommendation'] ?? '');
 $treatment      = clean($_POST['treatment'] ?? '');
 $follow_ups     = clean($_POST['follow_ups'] ?? '');
+
 
 /* ========================================================================
    IMAGE UPLOAD
@@ -127,6 +127,41 @@ if ($q && $q->num_rows) {
 $phpWord = new PhpWord();
 $section = $phpWord->addSection();
 
+/* ========================================================================
+   HEADER LOGO
+   ======================================================================== */
+$section->addImage(
+    './asset/fcl-logo.png',
+    [
+        'width' => 300,
+        'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER
+    ]
+);
+
+// ------------------------------------------------------
+// Company Address
+// ------------------------------------------------------
+$section->addText(
+    "No. 78, Industrial Zone, Katuwana, Homagama, Sri Lanka.",
+    ['name' => 'Arial', 'size' => 10],
+    ['alignment' => 'center']
+);
+
+$section->addText(
+    "Tel: +94 (0) 11 2893922 | Fax: +94 (0) 11 2893680 | Email: info@farmchemie.com",
+    ['name' => 'Arial', 'size' => 10],
+    ['alignment' => 'center']
+);
+
+$section->addText(
+    "Web: www.farmchemie.com",
+    ['name' => 'Arial', 'size' => 10],
+    ['alignment' => 'center']
+);
+
+$section->addTextBreak(1);
+
+
 /* TITLE */
 $section->addText("Layer Farm Visit Report", ['bold'=>true, 'size'=>18], ['alignment'=>'center']);
 $section->addText("Farm: $farm_name ($farm_location)", [], ['alignment'=>'center']);
@@ -178,7 +213,7 @@ if ($uploadedFiles) {
 
         $full = __DIR__ . "/" . $img;
         if (file_exists($full)) {
-            $cell->addImage($full, ['width'=>150]);
+            $cell->addImage($full, ['width'=>140]);
             $cell->addText(basename($img), ['size'=>8]);
         }
         $i++;
@@ -190,6 +225,23 @@ block($section, "Test Report", $test_report);
 block($section, "Recommendation", $recommendation);
 block($section, "Treatment", $treatment);
 block($section, "Follow Ups", $follow_ups);
+
+/* ========================================================================
+   SIGNATURE SECTION
+   ======================================================================== */
+$section->addTextBreak(3);
+
+$signature = __DIR__ . "/assets/signature.png";
+if (file_exists($signature)) {
+    $section->addImage($signature, [
+        'width' => 120,
+        'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::LEFT
+    ]);
+}
+
+$section->addText("______________________________", ['size'=>10]);
+$section->addText("Dr. XXXXX XXXXX", ['bold'=>true]);
+$section->addText("Veterinary Surgeon", ['size'=>10]);
 
 /* ========================================================================
    OUTPUT DOCX DIRECTLY (NO DOWNLOAD PAGE)
@@ -211,17 +263,5 @@ readfile($temp);
 unlink($temp);
 
 $conn->close();
-
-/* ========================================================================
-   AUTO REDIRECT AFTER DOWNLOAD
-   ======================================================================== */
-echo "<html>
-<head>
-<meta http-equiv='refresh' content='1;url=add-farm-records.php' />
-</head>
-<body style='font-family:Arial; text-align:center; margin-top:40px;'>
-Record saved successfully.<br>Redirecting...
-</body>
-</html>";
 
 exit;

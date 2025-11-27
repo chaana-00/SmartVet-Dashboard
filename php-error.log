@@ -38,3 +38,37 @@ Stack trace:
 #0 C:\wamp64\www\SmartVet-Dashboard\save-broilers.php(113): mysqli_stmt->execute()
 #1 {main}
   thrown in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php on line 113
+[27-Nov-2025 07:14:52 UTC] PHP Warning:  Undefined variable $section in C:\wamp64\www\SmartVet-Dashboard\save-layers.php on line 29
+[27-Nov-2025 07:14:52 UTC] PHP Stack trace:
+[27-Nov-2025 07:14:52 UTC] PHP   1. {main}() C:\wamp64\www\SmartVet-Dashboard\save-layers.php:0
+[27-Nov-2025 07:14:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function addImage() on null in C:\wamp64\www\SmartVet-Dashboard\save-layers.php:29
+Stack trace:
+#0 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-layers.php on line 29
+[27-Nov-2025 07:23:49 UTC] PHP Warning:  Undefined variable $section in C:\wamp64\www\SmartVet-Dashboard\save-layers.php on line 30
+[27-Nov-2025 07:23:49 UTC] PHP Stack trace:
+[27-Nov-2025 07:23:49 UTC] PHP   1. {main}() C:\wamp64\www\SmartVet-Dashboard\save-layers.php:0
+[27-Nov-2025 07:23:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function addImage() on null in C:\wamp64\www\SmartVet-Dashboard\save-layers.php:30
+Stack trace:
+#0 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-layers.php on line 30
+[27-Nov-2025 08:35:41 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'visit_datetime' at row 1 in C:\wamp64\www\SmartVet-Dashboard\save-layers.php:108
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-layers.php(108): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-layers.php on line 108
+[27-Nov-2025 08:35:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'visit_datetime' at row 1 in C:\wamp64\www\SmartVet-Dashboard\save-layers.php:108
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-layers.php(108): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-layers.php on line 108
+[27-Nov-2025 08:36:15 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'visit_datetime' at row 1 in C:\wamp64\www\SmartVet-Dashboard\save-layers.php:108
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-layers.php(108): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-layers.php on line 108
+[27-Nov-2025 08:36:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'visit_datetime' at row 1 in C:\wamp64\www\SmartVet-Dashboard\save-layers.php:108
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-layers.php(108): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-layers.php on line 108

@@ -132,7 +132,7 @@ $tableResult = $conn->query($tableQuery);
         </div>
         <h2 class="logo">VetSmart</h2>
         <ul>
-            <li><a href="add-farm-records.html" class="highlight">
+            <li><a href="add-farm-records.php" class="highlight">
                     <i class='bx bx-file'></i><span class="link-text">Create Farm Records</span>
                 </a></li>
             <li><a href="create-prescription.html" class="button">
