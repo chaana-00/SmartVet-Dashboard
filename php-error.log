@@ -1,0 +1,40 @@
+[27-Nov-2025 06:09:56 UTC] PHP Fatal error:  Uncaught ArgumentCountError: The number of elements in the type definition string must match the number of bind variables in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php:92
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-broilers.php(92): mysqli_stmt->bind_param('issiiddsidsssss...', 4, 'BR000013', '2025-11-27T11:0...', 2, 2, 2.0, 2.0, 'test', 2, 2.0, 'test', 'test', '["uploads\\/post...', 'test', 'test', 'test', 'test', 'test', 'test')
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php on line 92
+[27-Nov-2025 06:19:36 UTC] PHP Fatal error:  Uncaught Error: mysqli_stmt object is already closed in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php:229
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-broilers.php(229): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php on line 229
+[27-Nov-2025 06:22:21 UTC] PHP Fatal error:  Uncaught Error: mysqli_stmt object is already closed in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php:222
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-broilers.php(222): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php on line 222
+[27-Nov-2025 06:25:26 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'visit_datetime' at row 1 in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php:113
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-broilers.php(113): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php on line 113
+[27-Nov-2025 06:25:38 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'visit_datetime' at row 1 in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php:113
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-broilers.php(113): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php on line 113
+[27-Nov-2025 06:25:49 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'visit_datetime' at row 1 in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php:113
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-broilers.php(113): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php on line 113
+[27-Nov-2025 06:26:07 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'visit_datetime' at row 1 in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php:113
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-broilers.php(113): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php on line 113
+[27-Nov-2025 06:26:11 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'visit_datetime' at row 1 in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php:113
+Stack trace:
+#0 C:\wamp64\www\SmartVet-Dashboard\save-broilers.php(113): mysqli_stmt->execute()
+#1 {main}
+  thrown in C:\wamp64\www\SmartVet-Dashboard\save-broilers.php on line 113

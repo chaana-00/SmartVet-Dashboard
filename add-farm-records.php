@@ -89,14 +89,14 @@ $batchList = $conn->query("SELECT id, cage_no FROM batch_details ORDER BY id DES
         <div class="collapse" id="layersCollapse">
             <form action="save-layers.php" method="POST" enctype="multipart/form-data">
 
-                <!-- FARM -->
+                <!-- FARM NAME -->
                 <div class="mb-3">
                     <label class="form-label">Farm Name</label>
                     <select name="farm_name" class="form-select" required>
                         <option value="">Select Farm</option>
-                        <?php mysqli_data_seek($farmList, 0); while($row = $farmList->fetch_assoc()): ?>
+                        <?php foreach ($farmList as $row): ?>
                             <option value="<?= $row['id'] ?>"><?= $row['farm_name'] ?></option>
-                        <?php endwhile; ?>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
