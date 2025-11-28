@@ -35,7 +35,7 @@ $batchList = $conn->query("SELECT id, cage_no FROM batch_details ORDER BY id DES
     </div>
     <h2 class="logo">VetSmart</h2>
     <ul>
-      <li><a href="add-farm-records.html" class="highlight">
+      <li><a href="add-farm-records.php" class="highlight">
           <i class='bx bx-file'></i><span class="link-text">Add Farm Records</span>
         </a></li>
       <li><a href="create-prescription.html" class="button">
@@ -45,7 +45,7 @@ $batchList = $conn->query("SELECT id, cage_no FROM batch_details ORDER BY id DES
             Details</span></a></li>
       <li><a href="view-batch-details.php" class="active"><i class='bx bx-folder-open'></i><span class="link-text">View
             Batch Details</span></a></li>
-      <li><a href="view-batch-details.html" class="active"><i class='bx bx-folder-open'></i><span class="link-text">View
+      <li><a href="view-batch-details.php" class="active"><i class='bx bx-folder-open'></i><span class="link-text">View
             Batch Details</span></a></li>
       <li><a href="farm-register.html"><i class='bx bx-user'></i><span class="link-text">Farm Register</span></a>
       </li>

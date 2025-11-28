@@ -42,7 +42,7 @@ $farm_location = isset($_GET['farm_location']) ? $_GET['farm_location'] : '';
     </div>
 
     <ul>
-      <li><a href="add-farm-records.html" class="highlight">
+      <li><a href="add-farm-records.php" class="highlight">
                     <i class='bx bx-file'></i><span class="link-text">Create Farm Records</span>
                 </a></li>
             <li><a href="create-prescription.html" class="button">

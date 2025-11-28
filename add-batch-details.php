@@ -31,7 +31,7 @@
     </div>
     <h2 class="logo">VetSmart</h2>
     <ul>
-      <li><a href="add-farm-records.html" class="highlight">
+      <li><a href="add-farm-records.php" class="highlight">
           <i class='bx bx-file'></i><span class="link-text">Add Farm Records</span>
         </a></li>
       <li><a href="create-prescription.html" class="button">
@@ -41,8 +41,8 @@
             Details</span></a></li>
       <li><a href="view-batch-details.php" class="active"><i class='bx bx-folder-open'></i><span class="link-text">View
             Batch Details</span></a></li>
-      <li><a href="view-batch-details.html" class="active"><i class='bx bx-folder-open'></i><span class="link-text">View
-            Batch Details</span></a></li>
+      <!-- <li><a href="view-batch-details.html" class="active"><i class='bx bx-folder-open'></i><span class="link-text">View
+            Batch Details</span></a></li> -->
       <li><a href="farm-register.html"><i class='bx bx-user'></i><span class="link-text">Farm Register</span></a>
       </li>
       <!-- <li><a href="add-farm-records.html"><i class='bx bx-file'></i><span class="link-text">Add Farm
@@ -53,7 +53,7 @@
             class="link-text">Notifications</span></a></li> -->
       <!-- <li><a href="#"><i class='bx bx-bell'></i><span class="link-text">Notification</span></a></li>
             <li><a href="#"><i class='bx bx-cog'></i><span class="link-text">Settings</span></a></li> -->
-      <li><a href="user-dashboard.html"><i class='bx bx-layer'></i><span class="link-text">Dashboard</span></a>
+      <li><a href="user-dashboard.php"><i class='bx bx-layer'></i><span class="link-text">Dashboard</span></a>
       </li>
     </ul>
   </div>
