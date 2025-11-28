@@ -38,7 +38,7 @@ $batchList = $conn->query("SELECT id, cage_no FROM batch_details ORDER BY id DES
       <li><a href="add-farm-records.php" class="highlight">
           <i class='bx bx-file'></i><span class="link-text">Add Farm Records</span>
         </a></li>
-      <li><a href="create-prescription.html" class="button">
+      <li><a href="create-prescription.php" class="button">
           <i class='bx bx-file'></i><span class="link-text">Create Prescription</span>
         </a></li>
       <li><a href="add-batch-details.php"><i class='bx bx-card'></i><span class="link-text">Add Batch

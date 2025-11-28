@@ -49,5 +49,64 @@ CREATE TABLE batch_details (
     FOREIGN KEY (farm_id) REFERENCES farms(id)
 );
 
+CREATE TABLE `broilers_records` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `farm_id` int(11) NOT NULL,
+  `reg_number` varchar(100) NOT NULL,
+  `visit_datetime` datetime NOT NULL,
+  `flock_size` int(11) NOT NULL,
+  `age` int(11) NOT NULL,
+  `avg_weight` decimal(10,2) DEFAULT NULL,
+  `weight_gain` decimal(10,2) DEFAULT NULL,
+  `feed_intake` varchar(255) DEFAULT NULL,
+  `mortality` int(11) DEFAULT NULL,
+  `mortality_percent` decimal(5,2) DEFAULT NULL,
 
+  `complain` text,
+  `clinical_signs` text,
+  `post_mortem_images` longtext,
+  `dd` text,
+  `test_request` text,
+  `test_report` text,
+  `recommendation` text,
+  `treatment` text,
+  `follow_ups` text,
+
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `layers_records` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `farm_id` int(11) NOT NULL,
+  `reg_number` varchar(100) NOT NULL,
+  `visit_datetime` datetime NOT NULL,
+  `flock_size` int(11) NOT NULL,
+  `age` int(11) NOT NULL,
+  `avg_age` int(11) DEFAULT NULL,
+
+  `egg_production` int(11) DEFAULT NULL,
+  `egg_percent` decimal(5,2) DEFAULT NULL,
+  `feed_intake` varchar(255) DEFAULT NULL,
+
+  `mortality` int(11) DEFAULT NULL,
+  `mortality_percent` decimal(5,2) DEFAULT NULL,
+
+  `complain` text,
+  `clinical_signs` text,
+  `post_mortem_changes` text,
+  `post_mortem_images` longtext,
+
+  `dd` text,
+  `test_request` text,
+  `test_report` text,
+  `recommendation` text,
+  `treatment` text,
+  `follow_ups` text,
+
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+
+  PRIMARY KEY (`id`)
+);
 
