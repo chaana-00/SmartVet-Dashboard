@@ -145,6 +145,12 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 
+// Fotter
+$section->addTextBreak(3);
+$section->addText("*** Thank you for choosing VetSmart Service! ***", ['size' => 10]);
+$footer = $section->addFooter();
+$footer->addText("© 2025 All Rights Reserved! | Developed by IT Department | www.farmchemie.com | Contact: +94 70 228 5959", ['size' => 8]);
+
 // ------------------------------------------------------
 // Output the File
 // ------------------------------------------------------

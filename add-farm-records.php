@@ -88,13 +88,13 @@ $batchList = $conn->query("SELECT id, cage_no FROM batch_details ORDER BY id DES
                 </div>
 
                 <!-- FIELDS -->
-                <div class="mb-3"><label>Registration Number</label><input type="text" name="reg_number" class="form-control" required></div>
+                <div class="mb-3"><label>Registration Number</label><input type="text" name="reg_number" class="form-control" placeholder="Ex: BR00001"></div>
                 <div class="mb-3"><label>Visit Date</label><input type="datetime-local" name="visit_datetime" class="form-control" required></div>
-                <div class="mb-3"><label>Flock Size</label><input type="number" name="flock_size" class="form-control" required></div>
-                <div class="mb-3"><label>Age</label><input type="number" name="age" class="form-control" required></div>
-                <div class="mb-3"><label>Average Weight</label><input type="number" step="0.01" name="avg_weight" class="form-control"></div>
-                <div class="mb-3"><label>Weight Gain</label><input type="number" step="0.01" name="weight_gain" class="form-control"></div>
-                <div class="mb-3"><label>Feed Intake</label><input type="text" name="feed_intake" class="form-control"></div>
+                <div class="mb-3"><label>Flock Size</label><input type="number" name="flock_size" class="form-control" placeholder="Ex: 1" required></div>
+                <div class="mb-3"><label>Age</label><input type="number" name="age" class="form-control" placeholder="Ex: 1" required></div>
+                <div class="mb-3"><label>Average Weight</label><input type="number" step="0.01" name="avg_weight" class="form-control" placeholder="Ex: 1"></div>
+                <div class="mb-3"><label>Weight Gain</label><input type="number" step="0.01" name="weight_gain" class="form-control" placeholder="Ex: 1"></div>
+                <div class="mb-3"><label>Feed Intake</label><input type="text" name="feed_intake" class="form-control" placeholder=""></div>
                 <div class="mb-3"><label>Mortality</label><input type="number" name="mortality" class="form-control"></div>
                 <div class="mb-3"><label>Mortality %</label><input type="number" step="0.01" name="mortality_percent" class="form-control"></div>
                 <div class="mb-3"><label>Complain</label><textarea name="complain" class="form-control"></textarea></div>
@@ -138,16 +138,16 @@ $batchList = $conn->query("SELECT id, cage_no FROM batch_details ORDER BY id DES
                 </div>
 
                 <div class="mb-3"><label class="form-label">Registration Number</label>
-                    <input type="text" name="reg_number" class="form-control" required></div>
+                    <input type="text" name="reg_number" class="form-control" placeholder="Ex: LR00001" required></div>
 
                 <div class="mb-3"><label class="form-label">Visit Date & Time</label>
                     <input type="datetime-local" name="visit_datetime" class="form-control" required></div>
 
                 <div class="mb-3"><label class="form-label">Flock Size</label>
-                    <input type="number" name="flock_size" class="form-control" required></div>
+                    <input type="number" name="flock_size" class="form-control" placeholder="Ex: 1" required></div>
 
                 <div class="mb-3"><label class="form-label">Age</label>
-                    <input type="number" name="age" class="form-control" required></div>
+                    <input type="number" name="age" class="form-control" placeholder="Ex: 1" required></div>
 
                 <div class="mb-3"><label class="form-label">Average Age</label>
                     <input type="number" name="avg_age" class="form-control"></div>
