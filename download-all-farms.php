@@ -111,19 +111,19 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 
-// Save file
-$filename = "All-Farm-Records.docx";
-$tempFile = tempnam(sys_get_temp_dir(), 'docx');
-
-$writer = IOFactory::createWriter($phpWord, 'Word2007');
-$writer->save($tempFile);
-
 // Fotter
 $section->addTextBreak(3);
 $section->addText("*** Thank you for choosing VetSmart Service! ***", ['size' => 10]);
 $footer = $section->addFooter();
 $footer->addText("© 2025 All Rights Reserved! | Developed by IT Department | www.farmchemie.com | Contact: +94 70 228 5959", ['size' => 8]);
 
+
+// Save file
+$filename = "All-Farm-Records.docx";
+$tempFile = tempnam(sys_get_temp_dir(), 'docx');
+
+$writer = IOFactory::createWriter($phpWord, 'Word2007');
+$writer->save($tempFile);
 
 // Send to browser
 header("Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document");

@@ -75,7 +75,7 @@ if (!empty($_FILES['post_mortem_images']['name'][0])) {
         if ($_FILES['post_mortem_images']['error'][$i] !== UPLOAD_ERR_OK) continue;
 
         $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
-        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) continue;
+        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'heic'])) continue;
 
         $newFile = $farm_id . "_" . $reg_number . "_" . time() . "_" . rand(1000,9999) . ".$ext";
         $full = $uploadDir . $newFile;
@@ -235,7 +235,7 @@ block($section, "Follow Ups", $follow_ups);
 /* ========================================================================
    SIGNATURE AREA
    ======================================================================== */
-$section->addTextBreak(3);
+$section->addTextBreak(1);
 
 $signaturePath = __DIR__ . "/assets/signature.png";
 
@@ -248,7 +248,13 @@ if (file_exists($signaturePath)) {
 
 $section->addText("______________________________", ['size'=>10]);
 $section->addText("Dr. XXXXX XXXXX", ['bold'=>true]);
-$section->addText("Veterinary Surgeon", ['size'=>10]);
+$section->addText("Veterinary Surgeon", ['size'=>8]);
+
+
+$section->addTextBreak(1);
+$section->addText("*** Thank you for choosing VetSmart Service! ***", ['size' => 10]);
+$footer = $section->addFooter();
+$footer->addText("© 2025 All Rights Reserved! | Developed by IT Department | www.farmchemie.com | Contact: +94 70 228 5959", ['size' => 8]);
 
 /* ========================================================================
    OUTPUT WORD FILE
